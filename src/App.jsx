@@ -1,5 +1,4 @@
 // import React from "react";
-import { CssBaseline } from "@mui/material";
 
 // The CssBaseline component helps to kickstart an elegant, consistent, and simple baseline to build upon.
 
@@ -14,7 +13,6 @@ import Map from "./components/Map";
 function App() {
   return (
     <>
-      <CssBaseline />
       <Header />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3} style={{ width: "100%" }}>
@@ -31,9 +29,6 @@ function App() {
 }
 
 export default App;
-
-import React from "react";
-
 // export default function App() {
 //   return <div>hello</div>;
 // }

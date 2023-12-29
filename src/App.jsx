@@ -1,6 +1,6 @@
 // import React from "react";
 import { useState, useEffect } from "react";
-// The CssBaseline component helps to kickstart an elegant, consistent, and simple baseline to build upon.
+//useEffect is a Callback Function
 
 import { Box, Grid } from "@mui/material";
 // The grid creates visual consistency between layouts while allowing flexibility across a wide variety of designs. Material Design's responsive UI is based on a 12-column grid layout.
@@ -19,11 +19,24 @@ function App() {
   const [bounds, setBounds] = useState(null);
 
   //For the first time when user lands
-  useEffect(() => {}, []);
+  useEffect(() => {
+    //It is browser builtin location api
+    //In there, we are gonna have a callback function and pass a destructured coordinates argument and set it.
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoordinates({
+          lat: latitude,
+          lng: longitude,
+        });
+      }
+    );
+  }, []);
 
   //When it changes
   useEffect(() => {
-    getPlaceData().then((data) => {
+    console.log(coordinates, bounds);
+    //We are passing object of bounds to the travel api to then get the data
+    getPlaceData(coordinates.lat, coordinates.lng).then((data) => {
       console.log(data);
       setPlaces(data);
     });

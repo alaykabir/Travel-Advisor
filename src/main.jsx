@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 
 import CssBaseline from "@mui/material/CssBaseline";
+// The CssBaseline component helps to kickstart an elegant, consistent, and simple baseline to build upon.
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";

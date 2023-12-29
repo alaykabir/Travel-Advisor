@@ -21,7 +21,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 //Css import
 import "../App.css";
 
-function Map() {
+function Map({ setCoordinates, setBounds, coordinates }) {
   return (
     <div>
       <MapContainer

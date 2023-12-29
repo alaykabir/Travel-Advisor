@@ -1,5 +1,5 @@
 // import React from "react";
-
+import { useState, useEffect } from "react";
 // The CssBaseline component helps to kickstart an elegant, consistent, and simple baseline to build upon.
 
 import { Box, Grid } from "@mui/material";
@@ -10,7 +10,24 @@ import Places from "./components/Places";
 import Map from "./components/Map";
 // import PlaceDetails from "./components/PlaceDetails";
 
+//API imports
+import { getPlaceData } from "./api";
+
 function App() {
+  const [places, setPlaces] = useState([]);
+  const [coordinates, setCoordinates] = useState({});
+  const [bounds, setBounds] = useState(null);
+
+  //For the first time when user lands
+  useEffect(() => {}, []);
+
+  //When it changes
+  useEffect(() => {
+    getPlaceData().then((data) => {
+      console.log(data);
+      setPlaces(data);
+    });
+  }, [coordinates, bounds]);
   return (
     <>
       <Header />
@@ -20,7 +37,11 @@ function App() {
             <Places />
           </Grid>
           <Grid item xs={12} md={8}>
-            <Map />
+            <Map
+              setCoordinates={setCoordinates}
+              setBounds={setBounds}
+              coordinates={coordinates}
+            />
           </Grid>
         </Grid>
       </Box>

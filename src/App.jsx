@@ -47,7 +47,7 @@ function App() {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3} style={{ width: "100%" }}>
           <Grid item xs={12} md={4}>
-            <Places />
+            <Places places={places} />
           </Grid>
           <Grid item xs={12} md={8}>
             <Map

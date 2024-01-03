@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function Places() {
+export default function Places({ places }) {
   const [type, setType] = React.useState("");
   const [rating, setRating] = React.useState("");
 
@@ -18,12 +18,6 @@ export default function Places() {
   const handleChangeRating = (event) => {
     setRating(event.target.value);
   };
-
-  const places = [
-    { name: "Place 1" },
-    { name: "Place 2" },
-    { name: "Place 3" },
-  ];
 
   return (
     <Box sx={{ minWidth: 150 }}>

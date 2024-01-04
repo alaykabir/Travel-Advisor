@@ -1,16 +1,22 @@
 import React from "react";
 import AspectRatio from "@mui/joy/AspectRatio";
+import Stack from "@mui/material/Stack";
+import Chip from "@mui/material/Chip";
 import Button from "@mui/joy/Button";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
+import PlaceIcon from "@mui/icons-material/Place";
+import PhoneIcon from "@mui/icons-material/Phone";
+import ReviewsIcon from "@mui/icons-material/Reviews";
+import { Box } from "@mui/material";
 
 function PlaceDetails({ place }) {
   console.log(place);
   return (
-    <Card sx={{ width: 320 }}>
+    <Card sx={{ width: 400 }}>
       <div>
         <Typography level="title-lg">
           {place.name ? place.name : "The Another Restaurant"}
@@ -37,22 +43,48 @@ function PlaceDetails({ place }) {
           alt=""
         />
       </AspectRatio>
-      <CardContent orientation="horizontal">
-        <div>
-          <Typography level="body-xs">Total price:</Typography>
-          <Typography fontSize="lg" fontWeight="lg">
-            $2,900
+      <CardContent>
+        <Box display="flex" justifyContent="space-between">
+          <Typography fontSize="s" fontWeight="lg">
+            Total price:
           </Typography>
-        </div>
-        <Button
-          variant="solid"
-          size="md"
-          color="primary"
-          aria-label="Explore Bahamas Islands"
-          sx={{ ml: "auto", alignSelf: "center", fontWeight: 600 }}
-        >
-          Explore
-        </Button>
+          <Typography fontSize="s" fontWeight="s">
+            {place.price ? place.price : "N/A"}
+          </Typography>
+        </Box>
+        <Box display="flex" justifyContent="space-between">
+          <Typography fontSize="xs" fontWeight="lg">
+            Ranking:
+          </Typography>
+          <Typography fontSize="xs" fontWeight="s">
+            {place.ranking ? place.ranking : "N/A"}
+          </Typography>
+        </Box>
+        {place?.cuisine?.map((name) => {
+          <Stack direction="row" spacing={1}>
+            <Chip label={name} key={name} size="small" />;
+          </Stack>;
+        })}
+        <Box display="flex" justifyContent="space-between">
+          <PlaceIcon />
+          <Typography fontSize="xs" fontWeight="s">
+            {place.address ? place.address : "Not Provided"}
+          </Typography>
+        </Box>
+        <Box display="flex" justifyContent="space-between">
+          <PhoneIcon />
+          <Typography fontSize="xs" fontWeight="s">
+            {place.phone ? place.phone : "Not Provided"}
+          </Typography>
+        </Box>
+        <Box display="flex" justifyContent="space-between">
+          <Chip
+            icon={<ReviewsIcon fontSize="small" />}
+            label="Trip Advisor"
+            color="primary"
+            onClick={() => window.open(place.web_url, "_blank")}
+          />
+        </Box>
       </CardContent>
     </Card>
   );

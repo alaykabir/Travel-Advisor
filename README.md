@@ -17,10 +17,10 @@ Travel Advisor App is a powerful maps application built using React.js. It lever
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/travel-advisor-app.git
+   git clone https://github.com/your-username/Travel-Advisor-app.git
 2. Navigate to the project directory:
    ```bash
-   cd travel-advisor-app
+   cd Travel-Advisor-app
 4. Install dependencies:
    ```bash
    npm install

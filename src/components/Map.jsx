@@ -21,20 +21,25 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 //Css import
 import "../App.css";
 
-function Map({ setCoordinates, setBounds, coordinates }) {
+function Map({ setCoordinates, setBounds, coords, places }) {
+  // console.log(coordinates);
+
+  function SetViewOnClick({ coords }) {
+    const map = useMap();
+    map.setView(coords, map.getZoom());
+
+    return null;
+  }
   return (
     <div>
-      <MapContainer
-        center={[25.5941, 85.1376]}
-        zoom={10}
-        scrollWheelZoom={true}
-      >
+      <MapContainer center={coords} zoom={10} scrollWheelZoom={false}>
+        <SetViewOnClick coords={coords} />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[25.5941, 85.1376]}>
-          <Popup>Patna is Here.</Popup>
+        <Marker position={coords}>
+          <Popup>Your City is Here.</Popup>
         </Marker>
       </MapContainer>
     </div>

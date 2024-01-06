@@ -16,6 +16,7 @@ import { getPlaceData } from "./api";
 function App() {
   const [places, setPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({});
+  const [coords, setCoords] = useState([20.5937, 78.9629]);
   const [bounds, setBounds] = useState(null);
 
   //For the first time when user lands
@@ -28,16 +29,19 @@ function App() {
           lat: latitude,
           lng: longitude,
         });
+        setCoords([latitude, longitude]);
       }
     );
+
+    console.log(coords);
+    console.log(coordinates);
   }, []);
 
   //When it changes
   useEffect(() => {
-    console.log(coordinates, bounds);
     //We are passing object of bounds to the travel api to then get the data
     getPlaceData(coordinates.lat, coordinates.lng).then((data) => {
-      console.log(data);
+      // console.log(data);
       setPlaces(data);
     });
   }, [coordinates, bounds]);
@@ -53,7 +57,8 @@ function App() {
             <Map
               setCoordinates={setCoordinates}
               setBounds={setBounds}
-              coordinates={coordinates}
+              coords={coords}
+              places={places}
             />
           </Grid>
         </Grid>

@@ -14,7 +14,7 @@ import ReviewsIcon from "@mui/icons-material/Reviews";
 import { Box } from "@mui/material";
 
 function PlaceDetails({ place }) {
-  console.log(place);
+  // console.log(place);
   return (
     <Card sx={{ width: 400 }}>
       <div>
@@ -62,7 +62,7 @@ function PlaceDetails({ place }) {
         </Box>
         {place?.cuisine?.map((name) => {
           <Stack direction="row" spacing={1}>
-            <Chip label={name} key={name} size="small" />;
+            <Chip key={name} size="small" />;
           </Stack>;
         })}
         <Box display="flex" justifyContent="space-between">
